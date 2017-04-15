@@ -1,0 +1,54 @@
+{
+  "name": "@njuskalo/selectable-calendar",
+  "version": "1.0.0",
+  "description": "Calendar widget with advanced selecting features.",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha test/automated/index.js && istanbul check-coverage",
+    "start": "gulp build-watch",
+    "build": "gulp build",
+    "lint": "npm run lint:script && npm run lint:style",
+    "lint:script": "eslint \"index.js\"",
+    "lint:style": "stylelint \"test/manual/**/*.scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.trikoder.net:njuskalo/sputnik-selectable-calendar.git"
+  },
+  "author": "Damjan Jaklin Polić",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "jquery": "^1.11.2",
+    "jquery-ui": "^1.12.1",
+    "kist-view": "^0.1.6"
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.min.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "three": "global:THREE"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "browserify-shim": "^3.8.12",
+    "eslint": "^3.8.1",
+    "eslint-config-niksy": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-twig": "^0.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "opn": "^4.0.2",
+    "stylelint": "^7.5.0",
+    "stylelint-config-niksy": "^3.1.0",
+    "twig": "^0.9.5",
+    "watchify": "^3.7.0"
+  }
+}

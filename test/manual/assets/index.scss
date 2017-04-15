@@ -1,0 +1,111 @@
+/**
+ * =============================================================================
+ * User Entity Booking Calendar
+ * =============================================================================
+ */
+
+.SelectableCalendar {
+	font-family: sans-serif;
+	overflow-x: auto;
+	margin: 20px auto;
+	border-collapse: collapse;
+
+	&-weekHead,
+	&-dayCell {
+		border: 1px solid gray;
+	}
+
+	&-weekHead,
+	&-dayInitial,
+	&-dayNumber {
+		font-size: 10px;
+		font-weight: normal;
+		height: 18px;
+	}
+
+	&-weekHead,
+	&-dayHead,
+	&-dayCell {
+
+		@media screen and (min-width: 700px) {
+			cursor: pointer;
+		}
+	}
+
+	&-weekHead,
+	&-dayNumber {
+		color: lighten(#333, 40%);
+	}
+
+	&-weekHead {
+		border-bottom: 0;
+		padding-top: 3px;
+		height: 30px;
+	}
+
+	&-dayHead {
+		border: 1px solid gray;
+		border-width: 0 1px;
+
+		&--sunday {
+			border-right: 1px solid gray;
+		}
+	}
+
+	&-dayInitial {
+
+		.link-standard {
+			font-weight: bold;
+		}
+	}
+
+	&-dayHead {
+
+		&--weekend {
+			background-color: PapayaWhip;
+		}
+	}
+
+	&-dayRow {
+
+		@media screen and (max-width: 700) {
+			display: none;
+
+			&.is-active {
+				display: table-row;
+			}
+		}
+	}
+
+	&-dayCell {
+		min-width: 20px;
+		height: 32px;
+		text-align: center;
+
+		&--weekend {
+			background-color: PapayaWhip;
+		}
+	}
+
+	.ui-selected {
+		border-color: darken(#4682B4, 3%);
+		border-top-color: transparent;
+		background-color: SteelBlue !important;
+		color: #fff !important;
+
+		&.SelectableCalendar-dayHead {
+			border-bottom-width: 1px;
+		}
+
+		& .SelectableCalendar-dayNumber--weekend,
+		& .SelectableCalendar-dayNumber,
+		& .link-standard {
+			background-color: SteelBlue !important;
+			color: #fff !important;
+		}
+	}
+
+	.ui-selecting {
+		background-color: WhiteSmoke;
+	}
+}

@@ -1,0 +1,67 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Selectable Calendar</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+</head>
+
+<body>
+	<table class="SelectableCalendar">
+		<tr>
+		   {% for i in 0..7 %}
+		   <th colspan="7" class="SelectableCalendar-weekHead" data-weekcol="{{ i }}">***</th>
+		   {% endfor %}
+		</tr>
+		<tr>
+			{% set count = 0 %}
+			{% for i in 1..56 %}
+			<th class="SelectableCalendar-dayHead {% if (i % 7 == 0) or (i+1) % 7 == 0 %}SelectableCalendar-dayHead--weekend {% endif %}" data-daycol="{{ i }}" data-weekcol="{{ count }}">
+				<div class="SelectableCalendar-dayInitial">
+					<a class="link-standard">*</a>
+				</div>
+				<div class="SelectableCalendar-dayNumber">
+					<a class="link-standard">{{ i }}</a>
+				</div>
+			</th>
+			{% if (i % 7 == 0) %}
+				{% set count = count + 1 %}
+			{% endif %}
+			{% endfor %}
+		</tr>
+		{% for i in 1..8 %}
+		<tr class="SelectableCalendar-dayRow">
+			{% set count = 0 %}
+			{% for j in 1..56 %}
+			   <td class="SelectableCalendar-dayCell {% if (j % 7 == 0) or (j+1) % 7 == 0 %}SelectableCalendar-dayCell--weekend {% endif %}{% if j % 13 == 0 %} ui-selected{% endif %}" data-daycol="{{ j }}" data-weekcol="{{ count }}" data-day="19" data-month="10" data-year="2016"></td>
+			{% if (j % 7 == 0) %}
+			{% set count = count + 1 %}
+			{% endif %}
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+
+	<script src="../../../compiled/lib/{{ main }}"></script>
+
+	<script type="text/javascript">
+		$('.SelectableCalendar').selectableCalendar({
+		    selectedClass: 'ui-selected',
+		    weekHeadClass: 'SelectableCalendar-weekHead',
+		    dayHeadClass: 'SelectableCalendar-dayHead',
+		    dayCellClass: 'SelectableCalendar-dayCell',
+		    dataWeekColName: 'weekcol',
+		    dataDayColName: 'daycol',
+		    dataYearName: 'year',
+		    dataMonthName: 'month',
+		    dataDayName: 'day',
+		    selectionUpdate: function ( data ) {
+		    	console.log(data);
+		    }
+		});
+	</script>
+
+</body>
+</html>
